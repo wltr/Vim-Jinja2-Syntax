@@ -17,6 +17,11 @@ if !exists('g:jinja_syntax_html')
   let g:jinja_syntax_html=1
 endif
 
+" .vimrc variable to disable sv highlighting
+if !exists('g:jinja_syntax_sv')
+   let g:jinja_syntax_sv=1
+endif
+
 " For version 5.x: Clear all syntax items
 " For version 6.x: Quit when a syntax file was already loaded
 if !exists("main_syntax")
@@ -42,6 +47,12 @@ if g:jinja_syntax_html
     endif
     unlet b:current_syntax
   endif
+endif
+
+" Pull in the SV syntax.
+if g:jinja_syntax_sv
+  runtime! syntax/systemverilog.vim
+  unlet b:current_syntax
 endif
 
 syntax case match
